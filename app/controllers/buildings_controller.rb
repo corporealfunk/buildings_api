@@ -3,9 +3,54 @@ class BuildingsController < ApplicationController
 
   # GET /buildings
   def index
-    @buildings = Building.all
+    page = (params[:page] || 1).to_i
+    limit = (params[:limit] || 0).to_i
 
-    render json: @buildings
+    # sanity check
+    page = 1 if page < 1
+
+    # if limit is invalid, default to no pagination:
+    if limit < 1
+      limit = 0
+      page = 1
+    end
+
+
+    total_records = Building.count
+    if total_records == 0
+      render json: {
+        status: 'success',
+        data: [],
+        pagination: {
+          total_records: 0,
+          current_page: nil,
+          total_pages: 0,
+          next_page: nil,
+          prev_page: nil,
+          limit: limit
+        }
+      } and return
+    end
+
+    # we have records, calculate:
+    limit = total_records if limit == 0
+
+    total_pages = (total_records / limit.to_f).ceil
+
+    render json: {
+      status: 'success',
+      data: Building.joins(:client).includes(:client).order(:id)
+        .offset((page - 1) * limit)
+        .limit(limit),
+      pagination: {
+        total_records: total_records,
+        current_page: page,
+        total_pages: total_pages,
+        next_page: page < total_pages ? page + 1 : nil,
+        prev_page: page > 1 ? page - 1 : nil,
+        limit: limit
+      }
+    }
   end
 
   # GET /buildings/1

@@ -104,6 +104,7 @@
         state: 'NY',
         zip: '11215',
         custom_fields: {
+          garden_description: nil,
           driveway_length_feet: 12,
           sloped_roof: 'yes'
         }
@@ -115,6 +116,7 @@
         zip: '11222',
         custom_fields: {
           garden_description: 'zen garden',
+          driveway_length_feet: nil,
           sloped_roof: 'yes'
         }
       }
@@ -152,6 +154,7 @@
         zip: '11218',
         custom_fields: {
           description: 'great subway access',
+          swimming_pool_depth_feet: nil,
         }
       },
       {
@@ -160,6 +163,7 @@
         state: 'NY',
         zip: '11217',
         custom_fields: {
+          description: nil,
           swimming_pool_depth_feet: 3,
         }
       }
@@ -203,6 +207,7 @@
         zip: '11213',
         custom_fields: {
           lobby_tile_design: 'subway',
+          frontage_length_feet: nil,
           has_gym: 'no',
         }
       },
@@ -251,7 +256,8 @@
         state: 'NY',
         zip: '11211',
         custom_fields: {
-          living_room_height_feet: 4
+          living_room_height_feet: 4,
+          number_of_bathrooms: nil,
         }
       },
       {
