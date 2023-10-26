@@ -58,7 +58,10 @@ class BuildingsController < ApplicationController
 
   # GET /buildings/1
   def show
-    render json: @building
+    render json: {
+      status: :success,
+      data: @building
+    }
   end
 
   # POST /buildings
@@ -68,7 +71,7 @@ class BuildingsController < ApplicationController
     if @building.save
       render json: {
         status: :success,
-        building: @building
+        data: @building
       }, status: :created, location: @building
     else
       render json: {
@@ -83,7 +86,7 @@ class BuildingsController < ApplicationController
     if @building.update(building_params)
       render json: {
         status: :success,
-        building: @building
+        data: @building
       }
     else
       render json: {
