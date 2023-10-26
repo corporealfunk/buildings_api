@@ -25,7 +25,9 @@ Using Postman you can easily POST/GET data as needed from the API, here are the 
 This route returns JSON with the following keys:
 
 `status`: should be "success" if all went well
+
 `pagination`: data regarding the pagination information a client would need to page through the records
+
 `data`: the array of buildings
 
 All buildings will be listed with "flattened" custom fields included. It can be paginated like so, by passing the "per page" you'd like as `limit`:
@@ -39,11 +41,13 @@ Notice how the `pagination` key contains a hash with information.
 Information about one building, contains keys:
 
 `status`: should be "success" if all went well
+
 `data`: JSON object of the building data
 
 ### GET [/clients](http://localhost:3000/clients)
 
 `status`: should be "success" if all went well
+
 `data`: the array of clients
 
 Note that this route does not allow pagination
@@ -51,17 +55,19 @@ Note that this route does not allow pagination
 ### GET [/clients/:id](http://localhost:3000/clients/1)
 
 `status`: should be "success" if all went well
+
 `data`: JSON object of the client
 
 ### GET [/clients/:id/custom_fields](http://localhost:3000/clients/1/custom_fields)
 
 
 `status`: should be "success" if all went well
+
 `data`: array of the custom fields associated with this client, icluding the name of the field, the field_type, and enum_options if it is an enum field
 
 ### POST /buildings
 
-This is used to create a building, note that you will need the client ID to create a building, example raw submission:
+This is used to create a building, note that you will need the client ID to create a building, example raw POST body:
 
 ```json
 {
@@ -82,6 +88,7 @@ This is used to create a building, note that you will need the client ID to crea
 the response should be an HTTP 201 (created) status code and contain these keys:
 
 `status`: should be "success" if all went well
+
 `data`: JSON object of the building that was just created
 
 here's an example of a bad validation (the zoning is not a valid enum option for this client):
@@ -105,6 +112,7 @@ here's an example of a bad validation (the zoning is not a valid enum option for
 The response will be HTTP 422 (unprocessable entity) and a body with these keys:
 
 `status`: error
+
 `errors`: A JSON hash containing keys of field names that did not validate, each key is an array of validation errors
 
 ### PATCH /buildings/:id
