@@ -16,6 +16,10 @@ For example, to view the buildings:
 
 http://localhost:3000/buildings
 
+## Design Considerations:
+
+Instead of using a table and data model to store custom field values (and then joining to buildings to grab the custom field values), I am using a serialized JSON field on the buildings table. This has pros and cons. For a take home assignment, it allowed a quick MVP to get up and running, but it could hit some problems depending on whether or not the project needs to search and query by that data. I am also using MySQL as the DB. Postgres has far more advanced JSON fields that allow indexing and querying, so that could be a consideration if this project were going to be the basis for an actual system.
+
 ## API:
 
 Using Postman you can easily POST/GET data as needed from the API, here are the routes. I've included a few API endpoints not specified in the assignment to make it easier to browse some of the data, especialy CustomFields.
