@@ -1,0 +1,33 @@
+version: '3.8'
+name: "buildings"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app:cached
+      - bundle:/usr/local/bundle/
+    environment:
+      RAILS_ENV: development
+      DATABASE_URL: "mysql2://buildings:buildings@db/buildings"
+
+  db:
+    image: mysql:8.0.31
+    environment:
+      MYSQL_DATABASE: 'buildings'
+      MYSQL_USER: 'buildings'
+      MYSQL_PASSWORD: 'buildings'
+      MYSQL_ROOT_PASSWORD: 'root_container'
+    volumes:
+      - mysql:/var/lib/mysql
+
+# Names our volume
+volumes:
+  mysql:
+  bundle:
