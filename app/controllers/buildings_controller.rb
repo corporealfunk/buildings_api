@@ -2,6 +2,9 @@ class BuildingsController < ApplicationController
   before_action :set_building, only: %i[ show update destroy ]
 
   # GET /buildings
+  # pagination can be done by setting a page= and limit= (per page) so:
+  # /buildings?limit=2&page=1
+  # with no query params, one big page of all records is returned
   def index
     page = (params[:page] || 1).to_i
     limit = (params[:limit] || 0).to_i
