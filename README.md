@@ -121,7 +121,7 @@ The response will be HTTP 422 (unprocessable entity) and a body with these keys:
 
 ### PATCH /buildings/:id
 
-This is a way to edit a building, you can supply only the fields you wish to change. However, there is a catch! This is a TODO in my implentation, but I'm going to leave it here for this take home assignment: You must always supply the full representation of the "custom_fields". You can't deep-PATCH custom fields right now.
+This is a way to edit a building, you can supply only the fields you wish to change. However, there is a catch! This is a TODO in my implementation, but I'm going to leave it here for this take home assignment: You must always supply the full representation of the "custom_fields". You can't deep-PATCH custom fields right now.
 
 here's an example where we give the full representation of custom fields to update them:
 
