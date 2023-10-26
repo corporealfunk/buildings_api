@@ -20,7 +20,7 @@ http://localhost:3000/buildings
 
 Using Postman you can easily POST/GET data as needed from the API, here are the routes. I've included a few API endpoints not specified in the assignment to make it easier to browse some of the data, especialy CustomFields.
 
-### GET /buildings
+### GET [/buildings](http://localhost:3000/buildings)
 
 This route returns JSON with the following keys:
 
@@ -30,30 +30,31 @@ This route returns JSON with the following keys:
 
 All buildings will be listed with "flattened" custom fields included. It can be paginated like so, by passing the "per page" you'd like as `limit`:
 
-GET /buildings?limit=5&page=1
+GET [/buildings?limit=5&page=1](http://localhost:3000/buildings?limit=5&page=1)
 
 Notice how the `pagination` key contains a hash with information.
 
-### GET /buildings/:id
+### GET [/buildings/:id](http://localhost:3000/buildings/1)
 
 Information about one building, contains keys:
 
 `status`: should be "success" if all went well
 `data`: JSON object of the building data
 
-### GET /clients
+### GET [/clients](http://localhost:3000/clients)
 
 `status`: should be "success" if all went well
 `data`: the array of clients
 
 Note that this route does not allow pagination
 
-### GET /clients/:id
+### GET [/clients/:id](http://localhost:3000/clients/1)
 
 `status`: should be "success" if all went well
 `data`: JSON object of the client
 
-### GET /clients/:id/custom_fields
+### GET [/clients/:id/custom_fields](http://localhost:3000/clients/1/custom_fields)
+
 
 `status`: should be "success" if all went well
 `data`: array of the custom fields associated with this client, icluding the name of the field, the field_type, and enum_options if it is an enum field
