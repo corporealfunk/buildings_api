@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_150255) do
 
   create_table "custom_fields", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "client_id", null: false
-    t.string "type"
+    t.string "field_type"
     t.string "name"
     t.json "enum_options"
     t.datetime "created_at", null: false
