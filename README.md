@@ -12,6 +12,10 @@ To run the app on Docker, from the code directory:
 
 You can then use the API with the pre-seeded data. All seed data, including Custom Field definitions are in `app/db/seeds.rb`
 
+For example, to view the buildings:
+
+http://localhost:3000/buildings
+
 ## API:
 
 Using Postman you can easily POST/GET data as needed from the API, here are the routes. I've included a few API endpoints not specified in the assignment to make it easier to browse some of the data, especialy CustomFields.
