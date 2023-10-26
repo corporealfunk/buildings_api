@@ -1,5 +1,5 @@
 class BuildingsController < ApplicationController
-  before_action :set_building, only: %i[ show update destroy ]
+  before_action :set_building, only: %i[ show update ]
 
   # GET /buildings
   # pagination can be done by setting a page= and limit= (per page) so:
@@ -66,24 +66,31 @@ class BuildingsController < ApplicationController
     @building = Building.new(building_params)
 
     if @building.save
-      render json: @building, status: :created, location: @building
+      render json: {
+        status: :success,
+        building: @building
+      }, status: :created, location: @building
     else
-      render json: @building.errors, status: :unprocessable_entity
+      render json: {
+        status: :error,
+        errors: @building.errors
+      }, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /buildings/1
   def update
     if @building.update(building_params)
-      render json: @building
+      render json: {
+        status: :success,
+        building: @building
+      }
     else
-      render json: @building.errors, status: :unprocessable_entity
+      render json: {
+        status: :error,
+        errors: @building.errors
+      }, status: :unprocessable_entity
     end
-  end
-
-  # DELETE /buildings/1
-  def destroy
-    @building.destroy!
   end
 
   private
@@ -94,6 +101,6 @@ class BuildingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def building_params
-      params.require(:building).permit(:client_id, :address_1, :address_2, :city, :state, :zip, :custom_fields)
+      params.require(:building).permit(:client_id, :address_1, :address_2, :city, :state, :zip, custom_fields: {})
     end
 end

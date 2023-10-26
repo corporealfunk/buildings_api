@@ -30,7 +30,7 @@ class CustomField < ApplicationRecord
       end
     when TYPE_ENUM
       if !enum_options.include?(value)
-        return "#{key} must be one of: #{enum_options.join(',')}"
+        return "#{key} must be one of: #{enum_options.join(', ')}"
       end
     end
 

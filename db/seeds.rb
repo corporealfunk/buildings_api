@@ -27,7 +27,7 @@
       {
         field_type: CustomField::TYPE_ENUM,
         name: 'zoning',
-        enum_options: ['commericial', 'residential', 'mixed_use']
+        enum_options: ['commercial', 'residential', 'mixed_use']
       }
     ],
     buildings: [
